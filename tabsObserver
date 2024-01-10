@@ -1,0 +1,18 @@
+// setting observer function tot the month tabs to cal --init--  for each contract length
+function settingObserverForToggle() {
+  var tabOne24Mnths = document.getElementById("full-width-tab-0");
+  var observer = new MutationObserver(function (mutationsList) {
+    for (let mutation of mutationsList) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected"
+      ) {
+        initialSetup();
+      }
+    }
+  });
+  var config = { attributes: true, attributeFilter: ["aria-selected"] };
+  // Start observing changes only on specific element  with given attr name
+  observer.observe(tabOne24Mnths, config);
+}
+settingObserverForToggle();
